@@ -59,7 +59,40 @@ function selectChoice() {
 
     document.getElementById("your-score").innerText = yourScore;
     document.getElementById("opponent-score").innerText = opponentScore;
+    function selectChoice() {
+    you = this.id;
+    document.getElementById("your-choice").src = you + ".png";
+
+    opponent = choices[Math.floor(Math.random() * 3)];
+    document.getElementById("opponent-choice").src = opponent + ".png";
+
+    // Determine the winner or loser
+    let resultMessage = "";
+    if (you == opponent) {
+        // It's a tie
+        resultMessage = "It's a tie!";
+    }
+    else if (
+        (you == "rock" && opponent == "scissors") ||
+        (you == "scissors" && opponent == "paper") ||
+        (you == "paper" && opponent == "rock")
+    ) {
+        // Player wins
+        resultMessage = "You win!";
+        yourScore += 1;
+    }
+    else {
+        // Player loses
+        resultMessage = "You lose!";
+        opponentScore += 1;
+    }
+
+    document.getElementById("result").innerText = resultMessage;
+    document.getElementById("your-score").innerText = yourScore;
+    document.getElementById("opponent-score").innerText = opponentScore;
 }
+
+
 
 
 
